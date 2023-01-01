@@ -28,7 +28,7 @@ const updatePost = async (req, res) => {
         const id = req.params.id;
         let counter = 0;
         const sql = "UPDATE posts SET likes=$1 WHERE id=$2";
-        result = await pool.query("SELECT likes FROM posts WHERE id = $1", [id])
+        const result = await pool.query("SELECT likes FROM posts WHERE id = $1", [id])
         if (result.rows[0].likes === null) {
             console.log(result.rows[0]);
             counter = 1;
